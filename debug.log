@@ -1,0 +1,65 @@
+2022-10-14 07:52:04,805 django.request WARNING  Bad Request: /clients/1/
+2022-10-14 07:52:04,813 django.request WARNING  Bad Request: /clients/
+2022-10-14 07:53:12,950 django.request WARNING  Bad Request: /clients/1/
+2022-10-14 07:53:12,959 django.request WARNING  Bad Request: /clients/
+2022-10-14 07:53:17,602 django.request WARNING  Forbidden: /distribution/1/
+2022-10-14 08:04:00,705 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-10-14 08:08:59,587 django.request WARNING  Bad Request: /clients/1/
+2022-10-14 08:08:59,595 django.request WARNING  Bad Request: /clients/
+2022-10-14 08:09:02,833 django.request WARNING  Forbidden: /distribution/1/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 11:08:33,340 django.request WARNING  Bad Request: /clients/1/
+2022-10-14 11:08:33,347 django.request WARNING  Bad Request: /clients/
+2022-10-14 11:08:33,360 django.request WARNING  Forbidden: /distribution/1/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 11:08:42,461 django.request WARNING  Bad Request: /clients/1/
+2022-10-14 11:08:42,469 django.request WARNING  Bad Request: /clients/
+2022-10-14 11:08:42,482 django.request WARNING  Forbidden: /distribution/1/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 11:09:07,335 django.request WARNING  Bad Request: /clients/1/
+2022-10-14 11:09:07,344 django.request WARNING  Bad Request: /clients/
+2022-10-14 11:09:07,360 django.request WARNING  Forbidden: /distribution/1/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 11:09:19,233 django.request WARNING  Bad Request: /clients/1/
+2022-10-14 11:09:19,241 django.request WARNING  Bad Request: /clients/
+2022-10-14 11:09:19,254 django.request WARNING  Forbidden: /distribution/1/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 11:09:52,954 django.request WARNING  Bad Request: /clients/1/
+2022-10-14 11:09:52,963 django.request WARNING  Bad Request: /clients/
+2022-10-14 11:09:52,977 django.request WARNING  Forbidden: /distribution/1/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 11:10:06,492 django.request WARNING  Bad Request: /clients/1/
+2022-10-14 11:10:06,499 django.request WARNING  Bad Request: /clients/
+2022-10-14 11:10:06,512 django.request WARNING  Forbidden: /distribution/1/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-14 12:00:00,000 django.request WARNING  Method Not Allowed: /clients/
+2022-10-17 12:14:13,708 django.request WARNING  Bad Request: /clients/1/
+2022-10-17 12:14:13,717 django.request WARNING  Bad Request: /clients/
+2022-10-17 12:14:13,732 django.request WARNING  Forbidden: /distribution/1/
+2022-10-17 12:14:37,382 django.request WARNING  Bad Request: /clients/1/
+2022-10-17 12:14:37,389 django.request WARNING  Bad Request: /clients/
+2022-10-17 12:14:37,402 django.request WARNING  Forbidden: /distribution/1/
+2022-10-17 12:30:04,256 django.request WARNING  Bad Request: /clients/1/
+2022-10-17 12:30:04,264 django.request WARNING  Bad Request: /clients/
+2022-10-17 12:30:04,277 django.request WARNING  Forbidden: /distribution/1/
+2022-10-17 12:30:47,281 django.request WARNING  Bad Request: /clients/1/
+2022-10-17 12:30:47,289 django.request WARNING  Bad Request: /clients/
+2022-10-17 12:30:47,304 django.request WARNING  Forbidden: /distribution/1/
+2022-10-17 13:57:23,452 django.request WARNING  Forbidden: /distribution/1/
+2022-10-17 13:57:47,840 django.request WARNING  Forbidden: /distribution/1/
