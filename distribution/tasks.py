@@ -30,7 +30,7 @@ def send_notification(self, data, client_id, distribution_id, url=URL, token=TOK
         }
         try:
             requests.post(
-                url=url + (data['id']),
+                url=url + str(data['id']),
                 headers=header,
                 json=data,
             )
@@ -39,9 +39,5 @@ def send_notification(self, data, client_id, distribution_id, url=URL, token=TOK
             Messages.objects.filter(id=data['id'].update(status='not_sent'))
             raise self.retry(exc=exception)
         else:
-            logger.info(f"message id:{data['id']}, Статус сообщения: отпправленно")
+            logger.info(f"message id:{data['id']}, Статус сообщения: отправленно")
             Messages.objects.filter(id=data['id']).update(status='sent')
-    else:
-        logger.error(f"id сообщения:{data['id']} , не подходящее время для отправки сообщения.")
-        Messages.objects.filter(id=data['id'].update(status='not_sent'))
-        return self.retry(coountdown=60 * 60)

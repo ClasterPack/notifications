@@ -101,3 +101,8 @@ class Distribution(models.Model):
 
         verbose_name = 'рассылка'
         verbose_name_plural = 'рассылки'
+
+
+class DistributionTasks(models.Model):
+    task_id = models.CharField(_('id задачи'), max_length=50)
+    distribution = models.ForeignKey(Distribution, on_delete=models.CASCADE)

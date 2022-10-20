@@ -22,9 +22,3 @@ RUN poetry install
 
 COPY . /app
 
-EXPOSE 8000
-ENTRYPOINT []
-
-CMD python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000
-CMD celery -A notifications worker -l info -E
-CMD celery -A notifications flower --port=5566

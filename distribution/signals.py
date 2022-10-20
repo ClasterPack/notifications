@@ -3,8 +3,7 @@ from django.db.models import Q
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 
-from distribution.models import (Client, Distribution, DistributionTasks,
-                                 Messages)
+from distribution.models import Client, Distribution, Messages, DistributionTasks
 from distribution.tasks import send_notification
 from notifications.celery import app
 
@@ -36,6 +35,7 @@ def create_notification(sender, instance, created, update_fields, **kwargs):
             if instance.to_send:
                 send_notification.apply_async(
                     (data, client_id, distribution_id),
+                    eta=distribution.start_time,
                     expires=distribution.end_time,
                 )
 

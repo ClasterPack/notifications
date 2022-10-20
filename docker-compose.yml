@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  web:
+  django:
     build: .
     command: bash -c "python manage.py makemigrations --noinput && python manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000"
     volumes:
@@ -14,28 +14,30 @@ services:
     container_name: redis
     image: redis:alpine
     restart: unless-stopped
+    ports:
+      - "6379:6379"
+    entrypoint: redis-server --appendonly yes
+
   celery:
     build: .
-    restart: always
-    command: celery worker --app=notification_service --loglevel=info
+    restart: on-failure
+    command: celery -A notifications worker -l info -E
     volumes:
       - .:/code
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
-      - CELERY_RESULT_BACKEND=redis://redis:6379/0
     depends_on:
       - redis
-      - web
+      - django
   dashboard:
-    container_name: dashboard
-    build: .
-    command: flower --app=notification_service --port=5555 broker=redis://redis:6379/0
-    ports:
-      - 5566:5566
-    environment:
-      - CELERY_BROKER_URL=redis://redis:6379/0
-      - CELERY_RESULT_BACKEND=redis://redis:6379/0
-    depends_on:
-      - redis
-      - web
-      - celery
+      container_name: dashboard
+      build: .
+      command: celery --app=notifications flower --port=5555 broker=redis://redis:6379/0
+      ports:
+        - 5555:5555
+      environment:
+        - CELERY_BROKER_URL=redis://redis:6379/0
+      depends_on:
+        - redis
+        - django
+        - celery

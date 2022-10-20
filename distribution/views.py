@@ -29,22 +29,31 @@ class DistributionViewSet(viewsets.ModelViewSet):
     queryset = Distribution.objects.get_queryset().order_by('id')
 
     @action(detail=True, methods=['get'])
-    def info(self, request, pk=None):
+    def info(self, request, pk):
         """Общая информация для определенной рассылки."""
-        queryset_distribution = Distribution.objects.all()
+        queryset_distribution = Distribution.objects.filter(id=pk)
         get_object_or_404(queryset_distribution, pk=pk)
-        queryset = Messages.objects.filter(distribution_id=pk).all()
-        serializer = MessageSerializer(queryset, many=True)
-        return Response(serializer.data)
+        mesages = Messages.objects.filter(distribution_id=pk).all()
+
+        result = {
+            'Всего сообщений': len(mesages),
+            'Сообщений отправленно': mesages.filter(status='sent').count(),
+            'Сообщений отменено': mesages.filter(status='canceled').count(),
+            'Сообщения в ожидании отправления': mesages.filter(status='pending').count(),
+            'Distribution': queryset_distribution.values(),
+            'Messages': MessageSerializer(mesages, many=True).data,
+
+        }
+        return Response(result)
 
     @action(detail=False, methods=['get'])
     def full_info(self, request):
         """Общая информация для всех рассылок."""
         total_count = Distribution.objects.count()
         distribution = Distribution.objects.values('id')
+
         content = {
             'Общее число рассылок': total_count,
-            'Количество сообщение отправленно': '',
         }
         result = {}
 
@@ -53,16 +62,21 @@ class DistributionViewSet(viewsets.ModelViewSet):
                 'Всего сообщений': 0,
                 'Отправленно': 0,
                 'Не отправленно': 0,
+                'В ожидании отправления': 0,
             }
             msg = Messages.objects.filter(distribution_id=row['id']).all()
             group_sent = msg.filter(status='sent').count()
             group_not_sent = msg.filter(status='not_sent').count()
+            group_cancelled = msg.filter(status='cancelled').count()
+            group_pending = msg.filter(status='pending').count()
             res['Всего сообщений'] = len(msg)
             res['Отправленно'] = group_sent
             res['Не отправленно'] = group_not_sent
+            res['Отменено'] = group_cancelled
+            res['В ожидании отправления'] = group_pending
             result[row['id']] = res
 
-        content['Количество сообщение отправленно'] = result
+        content['Количество сообщений отправленно'] = result
         return Response(content)
 
     def update(self, request, pk=None):
