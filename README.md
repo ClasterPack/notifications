@@ -54,9 +54,9 @@
 - [python](https://www.python.org/downloads/) версии 3.10.6 или выше
 - менеджер зависимостей [poetry](https://python-poetry.org/docs/#installation) версии 1.2.0 или выше
 - Настройка окружения:
-1. Настроить репозиторий
+1. Настроить репозиторий:
     ```shell script
-   git clone https://github.com/ClasterPack/db_Api.git db_Api
+   git clone https://github.com/ClasterPack/notifications.git notifications
    cd notifications
     ```
    
@@ -86,17 +86,34 @@ TOKEN = '<your bearer token>'
    ```
 
 6. Запустить Django сервер:
-```shell script
-python manage.py runserver
-```
+   ```shell script
+   python manage.py runserver
+   ```
+7. При необходимости запустить redis-server:
+   ```shell script
+   redis-server --port 6379
+   ```
 
-7. Запустить менеджер задач Celery:
-```shell script
-celery -A notification_service worker -l info -E
-```
-8. Запускаем монитроинг Celery, Flower. Отслеживать можно [здесь](http://localhost:5566/):
-```shell script
-celery -A notifications flower --port=5566
-```
+8. Запустить менеджер задач Celery:
+   ```shell script
+   celery -A notification_service worker -l info -E
+   ```
+9. Запускаем монитроинг Celery, Flower. Отслеживать можно [здесь](http://localhost:5566/):
+   ```shell script
+   celery -A notifications flower --port=5566
+   ```
+Cсылки на API:
+
+http://0.0.0.0:8000 - Главная
+
+http://0.0.0.0:8000/clients - Клиенты
+
+http://0.0.0.0:8000/distribution - Рассылки
+
+http://0.0.0.0:8000/message - Сущность сообщений
+
+http://0.0.0.0:8000/docs - Swagger docs
+
+http://0.0.0.0:5555 - Flower
 
 
