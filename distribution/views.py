@@ -54,6 +54,12 @@ class DistributionViewSet(viewsets.ModelViewSet):
 
         content = {
             'Общее число рассылок': total_count,
+            'Общее количество сообщений': 0,
+            'Общее количество сообщений отправленно': 0,
+            'Общее количество сообщений не отправленно': 0,
+            'Общее количество сообщений в ожидании отправления': 0,
+            'Общее количество сообщений отмененно': 0,
+            'Информация о каждой рассылке': '',
         }
         result = {}
 
@@ -69,14 +75,19 @@ class DistributionViewSet(viewsets.ModelViewSet):
             group_not_sent = msg.filter(status='not_sent').count()
             group_cancelled = msg.filter(status='cancelled').count()
             group_pending = msg.filter(status='pending').count()
-            res['Всего сообщений'] = len(msg)
+            res['Общее количество сообщений'] = len(msg)
+            content['Общее количество сообщений'] += len(msg)
             res['Отправленно'] = group_sent
+            content['Общее количество сообщений отправленно'] +=group_sent
             res['Не отправленно'] = group_not_sent
+            content['Общее количество сообщений не отправленно'] += group_not_sent
             res['Отменено'] = group_cancelled
+            content['Общее количество сообщений отмененно'] += group_cancelled
             res['В ожидании отправления'] = group_pending
+            content['Общее количество сообщений в ожидании отправления'] += group_pending
             result[row['id']] = res
 
-        content['Количество сообщений отправленно'] = result
+        content['Информация о каждой рассылке'] = result
         return Response(content)
 
     def update(self, request, pk=None):

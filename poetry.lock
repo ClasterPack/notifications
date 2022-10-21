@@ -280,17 +280,6 @@ python-versions = "*"
 celery = ">=5.2.3,<6.0"
 
 [[package]]
-name = "django-prometheus"
-version = "2.2.0"
-description = "Django middlewares to monitor your application with Prometheus.io."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-prometheus-client = ">=0.7"
-
-[[package]]
 name = "django-rest-framework"
 version = "0.1.0"
 description = "alias."
@@ -1196,7 +1185,7 @@ devtools = ["pytest", "isort", "wemake-python-styleguide", "freezegun", "flake8"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "31049b64389970f80fae0d4c962a8615fa6e3bb8937eb52f315ebebdef964f1f"
+content-hash = "a3b5b0e7d59febddfe2ee312a0b21249ef47cfb32425247d4f01b5bb5493f254"
 
 [metadata.files]
 amqp = [
@@ -1282,10 +1271,6 @@ Django = [
 django-celery-results = [
     {file = "django_celery_results-2.4.0-py3-none-any.whl", hash = "sha256:be91307c02fbbf0dda21993c3001c60edb74595444ccd6ad696552fe3689e85b"},
     {file = "django_celery_results-2.4.0.tar.gz", hash = "sha256:75aa51970db5691cbf242c6a0ff50c8cdf419e265cd0e9b772335d06436c4b99"},
-]
-django-prometheus = [
-    {file = "django-prometheus-2.2.0.tar.gz", hash = "sha256:240378a1307c408bd5fc85614a3a57f1ce633d4a222c9e291e2bbf325173b801"},
-    {file = "django_prometheus-2.2.0-py2.py3-none-any.whl", hash = "sha256:e6616770d8820b8834762764bf1b76ec08e1b98e72a6f359d488a2e15fe3537c"},
 ]
 django-rest-framework = [
     {file = "django-rest-framework-0.1.0.tar.gz", hash = "sha256:47a8f496fa69e3b6bd79f68dd7a1527d907d6b77f009e9db7cf9bb21cc565e4a"},
