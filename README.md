@@ -1,124 +1,135 @@
-##  Cервис управления рассылками API администрирования и получения статистики.
+***
+**_Read this in other languages: [English](README.md), [Русский](README.ru.md)_**
+***
 
-## Основное задание :
-Спроектировать и разработать сервис, который по заданным правилам запускает рассылку по списку клиентов.
- **Сущность "рассылка" имеет атрибуты:**
- - уникальный id рассылки
- - дата и время запуска рассылки
- - текст сообщения для доставки клиенту
- - фильтр свойств клиентов, на которых должна быть произведена рассылка (код мобильного оператора, тег)
- - дата и время окончания рассылки: если по каким-то причинам не успели разослать все сообщения - никакие сообщения клиентам после этого времени доставляться не должны
-**Сущность "клиент" имеет атрибуты:**
- - уникальный id клиента
- - номер телефона клиента в формате 7XXXXXXXXXX (X - цифра от 0 до 9)
- - код мобильного оператора
- - тег (произвольная метка)
- - часовой пояс
+# API for mailing management service, administration and statistics.
 
-**Сущность "сообщение" имеет атрибуты:**
- - уникальный id сообщения
- - дата и время создания (отправки)
- - статус отправки
- - id рассылки, в рамках которой было отправлено сообщение
-- id клиента, которому отправили
+## This is testcase for python junior programmer:
 
-**Спроектировать и реализовать API для:**
+## Main tusk:
+Design and develop a service that, according to the given rules, launches a mailing list according to a list of clients.
+ **The "distribution" entity has the following attributes:**
+ - unique mailing id
+ - date and time of the mailing start
+ - text of the message to be delivered to the client
+ - filter properties of clients to which the mailing should be made (mobile operator code, tag)
+ - date and time of the end of the mailing: if for some reason we did not manage to send out all the messages - no messages to the clients after this time should be delivered
 
- - добавления нового клиента в справочник со всеми его атрибутами
- - обновления данных атрибутов клиента
- - удаления клиента из справочника
- - добавления новой рассылки со всеми её атрибутами
- - получения общей статистики по созданным рассылкам и количеству отправленных сообщений по ним с группировкой по статусам
- - получения детальной статистики отправленных сообщений по конкретной рассылке
- - обновления атрибутов рассылки
- - удаления рассылки
- - обработки активных рассылок и отправки сообщений клиентам
+**Entity "client" has attributes:**
+ - unique client id
+ - customer's phone number in the format 7XXXXXXXXXX (X is a number from 0 to 9)
+ - mobile operator code
+ - tag (arbitrary label)
+ - Timezone
 
-**Логика рассылки**
- - После создания новой рассылки, если текущее время больше времени начала и меньше времени окончания - должны быть выбраны из справочника все клиенты, которые подходят под значения фильтра, указанного в этой рассылке и запущена отправка для всех этих клиентов.
- - Если создаётся рассылка с временем старта в будущем - отправка должна стартовать автоматически по наступлению этого времени без дополнительных действий со стороны пользователя системы.
- - По ходу отправки сообщений должна собираться статистика (см. описание сущности "сообщение" выше) по каждому сообщению для последующего формирования отчётов.
- - Внешний сервис, который принимает отправляемые сообщения, может долго обрабатывать запрос, отвечать некорректными данными, на какое-то время вообще не принимать запросы. Необходимо реализовать корректную обработку подобных ошибок. Проблемы с внешним сервисом не должны влиять на стабильность работы разрабатываемого сервиса рассылок.
+**Entity "message" has attributes:**
+ - unique message id 
+ - date and time when created and sent
+ - message status
+ - id of the distribution within which the message was sent
+ - id of the client to whom it was sent
 
+**Design and develop API for:**
+ - CRUD operations for client(create new , read, update , delete client data)
+ - creat new distribution witch all it attributes
+ - obtaining general statistics on the created mailing lists and the number of sent messages on them, grouped by status
+ - obtaining detailed statistics of sent messages for a specific mailing list
+ - update distribution attributes
+ - delete distribution 
+ - processing active mailings and sending messages to customers
 
-**Тесты находятся в :**
-> distribution/tests
+**Distribution logic**
+ - after creating a new distributio, if the current time is greater than the start time and less than the end time,
+all clients that match the filter values specified in this distribution must be selected from the directory 
+and sending is started for all these clients.
+ -  if distribution is created with a start time in the future,
+the sending should start automatically after this time comes without additional actions from the system user.
+ - in the course of sending messages, statistics should be collected (see the description of the "message" entity above)
+for each message for subsequent reporting.
+ - An external service that receives sent messages can process a request for a long time, respond with incorrect data,
+or not accept requests at all for some time. It is necessary to implement the correct handling of such errors.
+Problems with the external service should not affect the stability of the developed mailing service.
 
-**При запушееном API ссылка на все методы [docks](http://localhost:8000/docs/)**
+**All tests are in :**
+>distribution/tests
+
+**When the API is pushed, there is a link to all methods [docks](http://localhost:8000/docs/)**
  
-**[Ссылка на задание.](https://www.craft.do/s/n6OVYFVUpq0o6L)**
+**[Link for a task (in Russian)](https://www.craft.do/s/n6OVYFVUpq0o6L)**
 
-## Рабочее окружение
+## Working environment
 
-Для начала разработки необходимо настроить рабочее окружение. Нам понадобятся следующие системные зависимости: 
-- [python](https://www.python.org/downloads/) версии 3.10.6 или выше
-- менеджер зависимостей [poetry](https://python-poetry.org/docs/#installation) версии 1.2.0 или выше
-- Настройка окружения:
-1. Настроить репозиторий:
+To start development, you need to set up a working environment.
+
+We need the following system dependencies:
+- [python](https://www.python.org/downloads/) version 3.10.6 or above
+- Dependency manager [poetry](https://python-poetry.org/docs/#installation) version 1.2.0 or above
+- Environment setup:
+1. Set up a repository:
     ```shell script
    git clone https://github.com/ClasterPack/notifications.git notifications
    cd notifications
     ```
    
-2. Подключение виртуального окружения:
+2. Connecting a virtual environment:
    ```shell script
    poetry shell
    ```
    
-3. Установить зависимости. Зависимости установяться в виртуальное окружение.
+3. Install dependencies. Dependencies are installed in the virtual environment.
     ```shell script
     poetry install
    ```
-   При необходимости билда с тестированием установить:
+   If necessary, install a build with testing environment:
    ```shell script
    poetry install -E devtools
    ```
    
-4. В файле .evn заполнить необходимые данные:
+4. Fill in the required data in the .evn file:
 ```
 TOKEN = '<your bearer token>'
    ```
 
-5. Создать и применить миграции в базу данных:
+5. Create and apply migrations to the database:
    ```shell script
    python manage.py makemigrations
    python manage.py migrate
    ```
 
-6. Запустить Django сервер:
+6. Start Django server:
    ```shell script
    python manage.py runserver
    ```
-7. При необходимости запустить redis-server:
+7. Start redis-server if needed:
    ```shell script
    redis-server --port 6379
    ```
 
-8. Запустить менеджер задач Celery:
+8. Launch Celery task manager::
    ```shell script
    celery -A notification_service worker -l info -E
    ```
-9. Запускаем монитроинг Celery, Flower. Отслеживать можно [здесь](http://localhost:5566/):
+9. Start monitoring Celery using Flower. You can track [here](http://localhost:5566/):
    ```shell script
    celery -A notifications flower --port=5566
    ```
 Cсылки на API:
 
-http://0.0.0.0:8000 - Главная
+http://0.0.0.0:8000 - Main Page
 
-http://0.0.0.0:8000/clients - Клиенты
+http://0.0.0.0:8000/clients - Clients
 
-http://0.0.0.0:8000/distribution - Рассылки
+http://0.0.0.0:8000/distribution - Distributions
 
-http://0.0.0.0:8000/message - Сущность сообщений
+http://0.0.0.0:8000/message - Messages
 
 http://0.0.0.0:8000/docs - Swagger docs
 
 http://0.0.0.0:5555 - Flower
 
 
-### Выполнены следующие дополнительные задания:
-- организовать тестирование написанного кода
-- сделать так, чтобы по адресу /docs/ открывалась страница со Swagger UI и в нём отображалось описание разработанного API.
-- реализовать администраторский Web UI для управления рассылками и получения статистики по отправленным сообщениям
-- подготовить docker-compose для запуска всех сервисов проекта одной командой
+### Completed the following additional tasks:
+- organize testing of the written code
+- make it so that the page with Swagger UI opens at /docs/ and it displays a description of the developed API.
+- implement an administrator Web UI to manage mailing lists and get statistics on sent messages
+- prepare docker-compose to start all project services with one command
