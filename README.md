@@ -55,7 +55,7 @@ Problems with the external service should not affect the stability of the develo
 
 **When the API is pushed, there is a link to all methods [docks](http://localhost:8000/docs/)**
  
-**[Link for a task (in Russian)](https://www.craft.do/s/n6OVYFVUpq0o6L)**
+**[Link for a exercise (in Russian)](https://www.craft.do/s/n6OVYFVUpq0o6L)**
 
 ## Working environment
 
