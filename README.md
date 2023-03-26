@@ -113,7 +113,7 @@ TOKEN = '<your bearer token>'
    ```shell script
    celery -A notifications flower --port=5566
    ```
-Cсылки на API:
+API links:
 
 http://0.0.0.0:8000 - Main Page
 
