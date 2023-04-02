@@ -62,8 +62,8 @@ Problems with the external service should not affect the stability of the develo
 To start development, you need to set up a working environment.
 
 We need the following system dependencies:
-- [python](https://www.python.org/downloads/) version 3.10.6 or above
-- Dependency manager [poetry](https://python-poetry.org/docs/#installation) version 1.2.0 or above
+- [python](https://www.python.org/downloads/) version 3.10.6 
+- Dependency manager [poetry](https://python-poetry.org/docs/#installation) version 1.2.0
 - Environment setup:
 1. Set up a repository:
     ```shell script
